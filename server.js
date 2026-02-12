@@ -9,6 +9,11 @@ import { inngest, functions } from "./inngest/index.js";
 import { clerkMiddleware } from "@clerk/express";
 import userRouter from "./Route/userRoute.js";
 
+
+import postRouter from "./Route/postRoute.js";
+import storyRouter from "./Route/storyRoute.js";
+import messageRouter from "./Route/messageRoute.js";
+
 const app = express();
 
 // Connect DB
@@ -29,6 +34,10 @@ app.use("/api/inngest", serve({ client: inngest, functions }));
 
 // API routes
 app.use("/api/user", userRouter);
+
+app.use("/api/post",postRouter);
+app.use("/api/story",storyRouter);
+app.use("/api/message",messageRouter)
 
 const PORT = process.env.PORT || 4000;
 
